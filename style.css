@@ -10,7 +10,7 @@ html, body, .container {
 
 body {
 	/* Background image for the page */
-	background: #254463 url('background.jpeg') no-repeat center center fixed;
+	background: #3b657f url('line2.png') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -31,6 +31,7 @@ body {
 	
 	text-align: center;
 	display: table;
+
 }
 
 /* Another container for adding a darkened background and making it fill the entire height */
@@ -45,6 +46,48 @@ body {
 .container .inner .content {
 	margin: 0 48px;
 	padding: 0 32px 32px 24px;
+}
+
+a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+a:hover {
+    color: #00CBA7;
+        	transition: all 0.4s ease 0s;
+	-webkit-transition: all 0.4 ease 0s;
+
+}
+
+a.here {
+ color: #00CBA7;
+}
+
+.container .inner .name{
+	float: left;
+	margin-left: 2.5em;
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+.container .inner .menu ul  {
+	float: right;
+}
+
+.container .inner .menu ul li{
+	list-style: none;
+	margin-right: 2.5em;
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+
+
+.outer {
+	margin-top: 20px;
+	width: 100%;
+	height:70px;
 }
 
 /* A bit of resizing of the main content items */
@@ -62,15 +105,15 @@ p {
 i.fa {
 	padding: 0 8px;
 	color: #FFF;
-	transition: all 0.3s ease 0s;
-	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.4s ease 0s;
+	-webkit-transition: all 0.4s ease 0s;
 }
 i.fa:hover {
-	color: #00C5DB;
+	color: #00CBA7;
 }
 
 /* Make the site look better and fit the page on mobile */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
 	h1 {
 		font-size: 2em;
 	}
@@ -91,4 +134,105 @@ i.fa:hover {
 	i.fa {
 		font-size: 2.5em;
 	}
+}
+
+@media (max-width: 850px) {
+.container .inner .name{
+	float: none;
+	margin: 20px 0 10px 0;
+}
+
+.container .inner .menu {
+	float: none;
+	list-style: none;
+	margin-top: 12px;
+	display: inline-block;
+}
+
+.outer {
+height:90px;
+}
+  }
+  
+   .menu ul {
+  padding: 0;
+  margin: 0;
+}
+ .menu ul li {
+  display: inline-block;
+  float: left;
+  list-style: none;
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+ .menuIcon {
+  display: none;
+  margin: 18px 0 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+ .menuIcon a {
+  width: 100%;
+  display: inline-block;
+}
+ .menuIcon a img {
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+   .menu {
+    max-height: 0;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    -webkit-transition: max-height 0.2s;
+    -moz-transition: max-height 0.2s;
+    transition: max-height 0.2s;
+	
+  }
+ .menu.menuOpen {
+    max-height: 215px;
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+  }
+  .outer {
+     height: 95px;
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+    transition: height .5s;
+  }
+   .outer.grow {
+    height: 225px;
+	width: 100%;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+  }
+  .container .inner .menu ul  {
+	float: none;
+}
+   .container .inner .menu.menuOpen ul li {
+    width:100%; 
+   	padding:0;
+  }
+     .container .inner .menu ul li {
+    width:100%; 
+   	padding:0;
+  }
+   .menuIcon {
+    display: inline-block;
+  }
+	.rotate {
+    -moz-transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+.rotate.down {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+
+}
 }
