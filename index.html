@@ -18,7 +18,7 @@
             var addStylesNode = document.getElementById("deferred-styles");
             var replacement = document.createElement("div");
             replacement.innerHTML = addStylesNode.textContent;
-            document.body.appendChild(replacement)
+            document.body.appendChild(replacement);
             addStylesNode.parentElement.removeChild(addStylesNode);
         };
         var raf = requestAnimationFrame || mozRequestAnimationFrame ||
@@ -26,6 +26,7 @@
         if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
         else window.addEventListener('load', loadDeferredStyles);
     </script>
+    <meta name=viewport content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="app" ng-controller="mainCtrl">
 <main class="ng-cloak" ng-cloak>
