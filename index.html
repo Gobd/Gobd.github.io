@@ -3,8 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Brian Kemper | Full Stack Web Developer</title>
-    <script async src="/js/js.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="/css/css.min.css">
+    <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+    <script async defer src="/js/js.min.js" charset="utf-8"></script>
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body ng-app="app" ng-controller="mainCtrl" class="ng-cloak">
@@ -363,6 +367,21 @@
     </div>
 
 </section>
-
+    <noscript id="deferred-styles">
+      <link rel="stylesheet" type="text/css" href="/css/css.min.css">
+    </noscript>
+    <script>
+      var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
 </body>
 </html>
