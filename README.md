@@ -1,2 +1,4 @@
-# Personal-Website
-A template for creating a quick "about me" website!
+# Personal Website
+My website!
+
+Using Angular & UI-Router, all DOM manipulation done with vanilla JS, animations using CSS.
