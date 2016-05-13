@@ -8,26 +8,26 @@
         display: none !important;
     }
     </style>
-    <script async src="/js/js.min.js" charset="utf-8"></script>
+    <script async defer src="/js/js.min.js" charset="utf-8"></script>
     <link rel="icon" type="image/png" href="favicon.png">
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/css.min.css">
+    </noscript>
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
 </head>
 <body ng-app="app" ng-controller="mainCtrl">
-<noscript id="deferred-styles">
-    <link rel="stylesheet" type="text/css" href="/css/css.min.css">
-</noscript>
-<script>
-    var loadDeferredStyles = function() {
-        var addStylesNode = document.getElementById("deferred-styles");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement)
-        addStylesNode.parentElement.removeChild(addStylesNode);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-            webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-    else window.addEventListener('load', loadDeferredStyles);
-</script>
 <main class="ng-cloak" ng-cloak>
 <nav id="navigation" ng-class="pxScr < 75 ? 'navCl' : 'navBl'">
     <div id="innerNav">
@@ -49,7 +49,7 @@
         {{tagLine}}
     </p>
     <div id="downArrow">
-        <a href="" ng-click="scrollTo('about')"><img src="down.svg"></a>
+        <a href="" ng-click="scrollTo('about')"><img height="75px" src="down.svg"></a>
     </div>
 </section>
 <section id="about">
@@ -59,7 +59,7 @@
     <p class="borderB">
 
     </p>
-    <img height="225px" src="meCircle.jpg" alt="">
+    <img height="100%" src="meCircle.jpg" alt="">
     <p class="aboutText">here is stuff about me here is stuff about me here is stuff about me here is stuff about me
         here is stuff about me here is stuff about me here is stuff about me here is stuff about me here is stuff about
         me here is stuff about me here is stuff about me </p>
