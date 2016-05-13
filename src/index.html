@@ -11,8 +11,8 @@
     <script async src="/js/js.min.js" charset="utf-8"></script>
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
-<body ng-app="app" ng-controller="mainCtrl" class="ng-cloak" ng-cloak>
-
+<body ng-app="app" ng-controller="mainCtrl">
+<main class="ng-cloak" ng-cloak>
 <nav id="navigation" ng-class="pxScr < 75 ? 'navCl' : 'navBl'">
     <div id="innerNav">
         <a id="navName" ng-style="navStyle" href="#" ng-click="scrollTo('top')">BRIAN KEMPER</a>
@@ -383,5 +383,6 @@
       if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
       else window.addEventListener('load', loadDeferredStyles);
     </script>
+    </main>
 </body>
 </html>
