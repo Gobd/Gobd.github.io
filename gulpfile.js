@@ -9,7 +9,9 @@ const
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
+    order = require("gulp-order"),
     annotate = require('gulp-ng-annotate'),
+    print = require('gulp-print'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     flatten = require('gulp-flatten'),
@@ -32,12 +34,18 @@ gulp.task('css', function() {
         .pipe(concat('css.min.css'))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./css'))
-        .pipe(reload({stream: true, match: '**/*.css'}));
+        .pipe(reload({
+            stream: true,
+            match: '**/*.css'
+        }));
 });
 
 gulp.task('js', function() {
     return gulp.src(mainBowerFiles('**/*.js').concat(['./src/**/*.js']))
         .pipe(flatten())
+        .pipe(order([
+            "angular.js","angular-scroll.js","jquery3a1.js","app.js","mainCtrl.js","*.js"
+        ]))
         .pipe(sourcemaps.init())
         .pipe(annotate())
         .pipe(uglify())
