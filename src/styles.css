@@ -62,21 +62,13 @@ body {
 }
 
 #navigation a {
-    color: #0d101c;
+    color: #ebeaea;
     text-decoration: none;
     transition: all .3s;
 }
 
 #navigation a:hover {
     font-size: 1.1em;
-}
-
-.navCl {
-    background-color: transparent;
-}
-
-.navBl {
-    background-color: white;
 }
 
 #innerNav {

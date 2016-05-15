@@ -1,8 +1,9 @@
-angular.module('app').controller('mainCtrl', function($scope, $document, $window, $interval) {
+angular.module('app').controller('mainCtrl', function($scope, $interval) {
 
     $scope.scrollTo = function(id) {
-        var el = angular.element(document.getElementById(id));
-        $document.scrollToElement(el, 50, 200);
+        $('html, body').animate({
+            scrollTop: $('#' + id).offset().top - 65
+        }, 200);
     };
 
     $scope.tagLine = '';
@@ -17,77 +18,65 @@ angular.module('app').controller('mainCtrl', function($scope, $document, $window
         var delayRand = function() {
             return Math.random() * (120 - 70) + 70;
         };
-        $interval(print, delayRand(), text.length)
+        $interval(print, delayRand(), text.length);
     }
 
     printer(tagText);
 
-    var svgList = document.getElementsByTagName('svg');
-    var aboutOff = angular.element(document.getElementById('about'))[0].offsetTop;
-    var skillsOff = angular.element(document.getElementById('skills'))[0].offsetTop;
-    var portOff = angular.element(document.getElementById('portfolio'))[0].offsetTop;
-    var navAbout = document.getElementById('navAbout');
-    var navSkills = document.getElementById('navSkills');
-    var navPortfolio = document.getElementById('navPortfolio');
-    var navContact = document.getElementById('navContact');
+    $(document).ready(function() {
 
-    function isScrolledIntoView(el) {
-        var elemTop = el.getBoundingClientRect().top;
-        var elemBottom = el.getBoundingClientRect().bottom;
-        var isVisible = (elemTop >= 0) && (elemBottom <= $window.innerHeight);
-        return isVisible;
-    }
+        function isScrolledIntoView(el) {
+            var elemTop = el.getBoundingClientRect().top;
+            var elemBottom = el.getBoundingClientRect().bottom;
+            var isVisible = (elemTop >= 0) && (elemBottom <= $window.innerHeight);
+            return isVisible;
+        }
 
-    $scope.pxScr = 0;
-    $scope.navStyle = {
-        'color': '#ebeaea'
-    };
-    $document.on('scroll', function() {
-        $scope.$apply(function() {
-            [].forEach.call(svgList, function(e) {
-                if (isScrolledIntoView(e)) {
-                    $(e).addClass('svgGrow');
-                } else {
-                    $(e).removeClass('svgGrow');
-                }
-            });
-            $scope.pxScr = $window.scrollY;
-            if ($scope.pxScr > 75) {
-                $scope.navStyle = {
-                    'color': '#131829'
-                };
+        var navAbout = $('#navAbout'),
+            navSkills = $('#navSkills'),
+            navPortfolio = $('#navPortfolio'),
+            navContact = $('#navContact');
+
+        $(window).scroll(function() {
+            var winTop = $(window).scrollTop() + 70;
+            if (winTop > 75) {
+                $('#navigation').css('background-color', 'white');
+                $('#navigation a').css('color', 'black');
             } else {
-                $scope.navStyle = {
-                    'color': '#ebeaea'
-                };
+                $('#navigation').css('background-color', 'transparent');
+                $('#navigation a').css('color', '#ebeaea');
             }
-            if ($scope.pxScr === 0) {
-                navAbout.style.textDecoration = 'none';
-                navSkills.style.textDecoration = 'none';
-                navPortfolio.style.textDecoration = 'none';
+            if (winTop < $('#top').offset().top + $('#top').height()) {
+                navAbout.css('text-decoration', 'none');
+                navSkills.css('text-decoration', 'none');
+                navPortfolio.css('text-decoration', 'none');
+                navContact.css('text-decoration', 'none');
             }
-            if ($scope.pxScr > aboutOff - 65) {
-                navAbout.style.textDecoration = 'underline';
-                navSkills.style.textDecoration = 'none';
-                navPortfolio.style.textDecoration = 'none';
+            if (winTop > $('#portfolio').offset().top && winTop < $('#portfolio').offset().top + $('#portfolio').height()) {
+                navAbout.css('text-decoration', 'none');
+                navSkills.css('text-decoration', 'none');
+                navPortfolio.css('text-decoration', 'underline');
+                navContact.css('text-decoration', 'none');
             }
-            if ($scope.pxScr > skillsOff - 65) {
-                navAbout.style.textDecoration = 'none';
-                navSkills.style.textDecoration = 'underline';
-                navPortfolio.style.textDecoration = 'none';
+            if (winTop > $('#skills').offset().top && winTop < $('#skills').offset().top + $('#skills').height()) {
+                navAbout.css('text-decoration', 'none');
+                navSkills.css('text-decoration', 'underline');
+                navPortfolio.css('text-decoration', 'none');
+                navContact.css('text-decoration', 'none');
             }
-            if ($scope.pxScr > portOff - 65) {
-                navAbout.style.textDecoration = 'none';
-                navSkills.style.textDecoration = 'none';
-                navPortfolio.style.textDecoration = 'underline';
+            if (winTop > $('#about').offset().top && winTop < $('#about').offset().top + $('#about').height()) {
+                navAbout.css('text-decoration', 'underline');
+                navSkills.css('text-decoration', 'none');
+                navPortfolio.css('text-decoration', 'none');
+                navContact.css('text-decoration', 'none');
             }
-            if ($window.innerHeight + $document[0].body.scrollTop >= $document[0].body.scrollHeight - 50) {
-                navContact.style.textDecoration = 'underline';
-                navPortfolio.style.textDecoration = 'none';
-            } else {
-                navContact.style.textDecoration = 'none';
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 25) {
+              navAbout.css('text-decoration', 'none');
+              navSkills.css('text-decoration', 'none');
+              navPortfolio.css('text-decoration', 'none');
+              navContact.css('text-decoration', 'underline');
             }
         });
-    });
 
+    });
 });
