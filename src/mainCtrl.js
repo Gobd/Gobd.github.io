@@ -1,6 +1,6 @@
-angular.module('app').controller('mainCtrl', function ($scope, $document, $window, $interval) {
+angular.module('app').controller('mainCtrl', function($scope, $document, $window, $interval) {
 
-    $scope.scrollTo = function (id) {
+    $scope.scrollTo = function(id) {
         var el = angular.element(document.getElementById(id));
         $document.scrollToElement(el, 50, 200);
     };
@@ -10,34 +10,17 @@ angular.module('app').controller('mainCtrl', function ($scope, $document, $windo
 
     function printer(text) {
         var count = 1;
-        var print = function () {
+        var print = function() {
             $scope.tagLine = text.slice(0, count);
             count++;
         };
-        var delayRand = function () {
+        var delayRand = function() {
             return Math.random() * (120 - 70) + 70;
         };
         $interval(print, delayRand(), text.length)
     }
 
     printer(tagText);
-
-    SVGElement.prototype.hasClass = function (className) {
-        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(this.getAttribute('class'));
-    };
-
-    SVGElement.prototype.addClass = function (className) {
-        if (!this.hasClass(className)) {
-            this.setAttribute('class', this.getAttribute('class') + ' ' + className);
-        }
-    };
-
-    SVGElement.prototype.removeClass = function (className) {
-        var removedClass = this.getAttribute('class').replace(new RegExp('(\\s|^)' + className + '(\\s|$)', 'g'), '$2');
-        if (this.hasClass(className)) {
-            this.setAttribute('class', removedClass);
-        }
-    };
 
     var svgList = document.getElementsByTagName('svg');
     var aboutOff = angular.element(document.getElementById('about'))[0].offsetTop;
@@ -48,23 +31,35 @@ angular.module('app').controller('mainCtrl', function ($scope, $document, $windo
     var navPortfolio = document.getElementById('navPortfolio');
     var navContact = document.getElementById('navContact');
 
+    function isScrolledIntoView(el) {
+        var elemTop = el.getBoundingClientRect().top;
+        var elemBottom = el.getBoundingClientRect().bottom;
+        var isVisible = (elemTop >= 0) && (elemBottom <= $window.innerHeight);
+        return isVisible;
+    }
+
     $scope.pxScr = 0;
-    $scope.navStyle = {'color': '#ebeaea'};
-    $document.on('scroll', function () {
-        $scope.$apply(function () {
-            [].forEach.call(svgList, function (e) {
-                if ($window.innerHeight - 50 >= e.getBoundingClientRect().top) {
-                    e.addClass("svgGrow");
-                }
-                if ((e.getBoundingClientRect().top < 75 && e.hasClass('svgGrow')) || (e.getBoundingClientRect().top + 100 > $window.innerHeight && e.hasClass('svgGrow'))) {
-                    e.removeClass("svgGrow");
+    $scope.navStyle = {
+        'color': '#ebeaea'
+    };
+    $document.on('scroll', function() {
+        $scope.$apply(function() {
+            [].forEach.call(svgList, function(e) {
+                if (isScrolledIntoView(e)) {
+                    $(e).addClass('svgGrow');
+                } else {
+                    $(e).removeClass('svgGrow');
                 }
             });
             $scope.pxScr = $window.scrollY;
             if ($scope.pxScr > 75) {
-                $scope.navStyle = {'color': '#131829'};
+                $scope.navStyle = {
+                    'color': '#131829'
+                };
             } else {
-                $scope.navStyle = {'color': '#ebeaea'};
+                $scope.navStyle = {
+                    'color': '#ebeaea'
+                };
             }
             if ($scope.pxScr === 0) {
                 navAbout.style.textDecoration = 'none';

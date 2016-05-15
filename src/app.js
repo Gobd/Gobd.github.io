@@ -1,1 +1,1 @@
-angular.module('app', ['ui.router','duScroll']);
+angular.module('app', ['duScroll']);
