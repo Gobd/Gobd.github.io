@@ -25,6 +25,18 @@ angular.module('app').controller('mainCtrl', function($scope, $interval) {
 
     $(document).ready(function() {
 
+      var winTop = $(window).scrollTop() + 70;
+      function navBarColor() {
+        if (winTop > 75) {
+            $('#navigation').css('background-color', 'white');
+            $('#navigation a').css('color', 'black');
+        } else {
+            $('#navigation').css('background-color', 'transparent');
+            $('#navigation a').css('color', '#ebeaea');
+        }
+      }
+      navBarColor();
+
         function isScrolledIntoView(el) {
             var elemTop = el.getBoundingClientRect().top;
             var elemBottom = el.getBoundingClientRect().bottom;
@@ -38,14 +50,8 @@ angular.module('app').controller('mainCtrl', function($scope, $interval) {
             navContact = $('#navContact');
 
         $(window).scroll(function() {
-            var winTop = $(window).scrollTop() + 70;
-            if (winTop > 75) {
-                $('#navigation').css('background-color', 'white');
-                $('#navigation a').css('color', 'black');
-            } else {
-                $('#navigation').css('background-color', 'transparent');
-                $('#navigation a').css('color', '#ebeaea');
-            }
+            winTop = $(window).scrollTop() + 70;
+            navBarColor();
             if (winTop < $('#top').offset().top + $('#top').height()) {
                 navAbout.css('text-decoration', 'none');
                 navSkills.css('text-decoration', 'none');
@@ -70,7 +76,7 @@ angular.module('app').controller('mainCtrl', function($scope, $interval) {
                 navPortfolio.css('text-decoration', 'none');
                 navContact.css('text-decoration', 'none');
             }
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 25) {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 25 || winTop > $('#contact').offset().top) {
               navAbout.css('text-decoration', 'none');
               navSkills.css('text-decoration', 'none');
               navPortfolio.css('text-decoration', 'none');
