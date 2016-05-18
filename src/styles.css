@@ -46,6 +46,7 @@ html {
 }
 .svgGrow {
     animation: pulse 1s;
+    transform: translate3d(0, 0, 0);
 }
 html, body {
     /*overflow-y: auto;*/
