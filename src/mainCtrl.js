@@ -29,30 +29,35 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
         var winWidth = $(window).width();
         var innerNav = $('#innerNav'),
             navigation = $('#navigation'),
-            navA = navigation.find('a');
+            navA = navigation.find('a'),
+            navToggle = $('#navToggle');
+
+        $(document).on('click', '#navToggle', function () {
+            navToggle.toggleClass("active");
+            innerNav.css('max-height') === '65px' ? innerNav.css('max-height', '500px') : innerNav.css('max-height', '65px');
+        });
+
+        $(document).on('click', '.navLink', function () {
+            if(navToggle.hasClass('active')) navToggle.removeClass('active');
+            innerNav.css('max-height', '65px');
+        });
 
         $(window).resize(function () {
             winWidth = $(window).width();
             navBarColor();
         });
         function navBarColor() {
-            if (winTop < 75) {
+            if (winWidth < 768) {
+                innerNav.css('background-color', 'white');
+                navigation.css('background-color', 'white');
+                navA.css('color', 'black');
+            } else if (winTop < 75) {
                 navigation.css('background-color', 'transparent');
-                if (winWidth < 768) {
-                    innerNav.css('background-color', 'transparent');
-                }
-                if (innerNav.css('background-color') === 'rgb(255, 255, 255)') {
-                    innerNav.css('background-color', 'transparent');
-                }
+                innerNav.css('background-color', 'transparent');
                 navA.css('color', '#ebeaea');
             } else {
                 navigation.css('background-color', 'white');
-                if (winWidth < 768) {
-                    innerNav.css('background-color', 'white');
-                }
-                if (innerNav.css('background-color') === 'rgb(0, 0, 0, 0)') {
-                    innerNav.css('background-color', 'white');
-                }
+                innerNav.css('background-color', 'white');
                 navA.css('color', 'black');
             }
         }
