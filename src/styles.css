@@ -1,32 +1,27 @@
 html {
     box-sizing: border-box;
 }
-
 *, *:before, *:after {
     box-sizing: inherit;
 }
-
 @font-face {
     font-family: system;
     font-style: normal;
     font-weight: 300;
     src: local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Ubuntu"), local("Segoe UI"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
 }
-
 @font-face {
     font-family: system;
     font-style: normal;
     font-weight: 400;
     src: local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Ubuntu"), local("Segoe UI"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
 }
-
 @font-face {
     font-family: system;
     font-style: normal;
     font-weight: 700;
     src: local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Segoe UI Bold"), local("Tahoma Bold");
 }
-
 @keyframes flickerAnimation {
     0% {
         opacity: 1;
@@ -38,7 +33,6 @@ html {
         opacity: 1;
     }
 }
-
 @keyframes pulse {
     from {
         transform: scale3d(1, 1, 1);
@@ -50,16 +44,13 @@ html {
         transform: scale3d(1, 1, 1);
     }
 }
-
 .svgGrow {
     animation: pulse 1s;
 }
-
 html, body {
     overflow: auto;
     font-family: system, "Segoe UI", Tahoma;
 }
-
 #navigation {
     position: fixed;
     top: 0;
@@ -69,17 +60,14 @@ html, body {
     transition: background-color .3s;
     border-bottom: 1px solid #51565D;
 }
-
 #navigation a {
     color: #ebeaea;
     text-decoration: none;
     transition: color .3s;
 }
-
 #navigation a:hover {
     font-size: 1.1em;
 }
-
 #innerNav {
     display: flex;
     justify-content: space-around;
@@ -87,11 +75,9 @@ html, body {
     font-size: 1.45em;
     margin-top: 20px;
 }
-
 #navName {
     font-weight: 700;
 }
-
 #top {
     padding-top: 60px;
     height: 100vh;
@@ -105,38 +91,31 @@ html, body {
     justify-content: center;
     font-size: 2.5em;
 }
-
 #topName {
     margin: 50px;
     font-weight: 700;
 }
-
 #devInfo {
     font-size: 3.75vw;
     margin: 50px;
 }
-
 .borderW {
     margin: 0;
     min-width: 100px;
     border-bottom: 4px solid white;
 }
-
 .borderB {
     margin: -20px 0 0 0;
     min-width: 50px;
     border-bottom: 4px solid black;
 }
-
 #downArrow img {
     filter: invert(100%);
     animation: flickerAnimation 1.5s infinite;
 }
-
 .secTitle {
     font-size: 2em;
 }
-
 #about {
     display: flex;
     flex-direction: column;
@@ -144,16 +123,13 @@ html, body {
     border-bottom: 2px solid black;
     padding-bottom: 35px;
 }
-
 #about img {
     margin: 35px 0 20px 0;
 }
-
 .aboutText {
     width: 60%;
     text-align: center;
 }
-
 #skills {
     display: flex;
     flex-direction: column;
@@ -162,7 +138,6 @@ html, body {
     padding-right: 75px;
     padding-left: 75px;
 }
-
 #skillsIcons {
     margin-top: 50px;
     margin-bottom: 20px;
@@ -171,13 +146,11 @@ html, body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
 svg {
     height: 100px;
     width: 100px;
     margin: 35px 20px;
 }
-
 #portfolio {
     display: flex;
     flex-direction: column;
@@ -185,7 +158,6 @@ svg {
     height: 500px;
     border-bottom: 2px solid black;
 }
-
 #contact {
     display: flex;
     flex-direction: column;
@@ -194,28 +166,24 @@ svg {
     padding-right: 75px;
     padding-left: 75px;
 }
-
 #contactButtons {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
-
 #contactButtons svg {
     margin: 40px;
 }
-
 #contactStatement {
     font-size: 1.1em;
     margin-top: 50px;
 }
-
 .contactIcon:hover {
     transition: all 0.3s;
     width: 115px;
     height: 115px;
 }
-
 #navToggle {
     cursor: pointer;
     padding: 10px 35px 16px 0;
@@ -224,7 +192,6 @@ svg {
     margin-bottom: -25px;
     display: none;
 }
-
 #navToggle span, #navToggle span:before, #navToggle span:after {
     cursor: pointer;
     border-radius: 10px;
@@ -235,36 +202,32 @@ svg {
     display: block;
     content: '';
 }
-
 #navToggle span:before {
     top: -10px;
 }
-
 #navToggle span:after {
     bottom: -10px;
 }
-
 #navToggle span, #navToggle span:before, #navToggle span:after {
     transition: all .3s ease-in-out;
 }
-
 #navToggle.active span {
     background-color: transparent;
 }
-
 #navToggle.active span:before, #navToggle.active span:after {
     top: 0;
 }
-
 #navToggle.active span:before {
     transform: rotate(45deg);
 }
-
 #navToggle.active span:after {
     transform: rotate(-45deg);
 }
-
 @media (max-width: 768px) {
+    #skills {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     #navToggle {
         display: flex;
     }
@@ -281,54 +244,42 @@ svg {
         max-height: 65px;
         transition: max-height .3s;
     }
-
     #navigation {
         background-color: white;
     }
-
     #navigation a {
         color: black;
     }
-
     #navAbout {
         margin: 30px 0 10px 10px;
     }
-
     #navSkills {
         margin: 10px;
     }
-
     #navPortfolio {
         margin: 10px;
     }
-
     #navContact {
         margin: 10px;
     }
-
     #top {
         font-size: 2em;
     }
-
     #topName {
         margin: 24px;
     }
-
     #devInfo {
         margin: 24px;
     }
 }
-
 @media (min-width: 1200px) {
     #skillsIcons {
         padding-left: 200px;
         padding-right: 200px;
     }
-
     #topName {
         margin: 50px;
     }
-
     #devInfo {
         margin: 50px;
         font-size: 2.8rem;

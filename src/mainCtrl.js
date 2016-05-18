@@ -1,6 +1,6 @@
-angular.module('app').controller('mainCtrl', function ($scope, $interval) {
+angular.module('app').controller('mainCtrl', function($scope, $interval) {
 
-    $scope.scrollTo = function (id) {
+    $scope.scrollTo = function(id) {
         $('html, body').animate({
             scrollTop: $('#' + id).offset().top - 65
         }, 200);
@@ -11,11 +11,11 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
 
     function printer(text) {
         var count = 1;
-        var print = function () {
+        var print = function() {
             $scope.tagLine = text.slice(0, count);
             count++;
         };
-        var delayRand = function () {
+        var delayRand = function() {
             return Math.random() * (120 - 70) + 70;
         };
         $interval(print, delayRand(), text.length);
@@ -23,7 +23,7 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
 
     printer(tagText);
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         var winTop = $(window).scrollTop() + 70;
         var winWidth = $(window).width();
@@ -32,32 +32,30 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
             navA = navigation.find('a'),
             navToggle = $('#navToggle');
 
-        $(document).on('click', '#navToggle', function () {
+        $(document).on('click', '#navToggle', function() {
             navToggle.toggleClass("active");
             innerNav.css('max-height') === '65px' ? innerNav.css('max-height', '500px') : innerNav.css('max-height', '65px');
         });
 
-        $(document).on('click', '.navLink', function () {
-            if(navToggle.hasClass('active')) navToggle.removeClass('active');
+        $(document).on('click', '.navLink', function() {
+            if (navToggle.hasClass('active')) navToggle.removeClass('active');
             innerNav.css('max-height', '65px');
         });
 
-        $(window).resize(function () {
+        $(window).resize(function() {
             winWidth = $(window).width();
             navBarColor();
         });
+
         function navBarColor() {
             if (winWidth < 768) {
-                innerNav.css('background-color', 'white');
                 navigation.css('background-color', 'white');
                 navA.css('color', 'black');
             } else if (winTop < 75) {
                 navigation.css('background-color', 'transparent');
-                innerNav.css('background-color', 'transparent');
                 navA.css('color', '#ebeaea');
             } else {
                 navigation.css('background-color', 'white');
-                innerNav.css('background-color', 'white');
                 navA.css('color', 'black');
             }
         }
@@ -74,7 +72,7 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
             about = $('#about');
 
 
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             winTop = $(window).scrollTop() + 70;
             navBarColor();
             if (winTop < top.offset().top + top.height()) {
