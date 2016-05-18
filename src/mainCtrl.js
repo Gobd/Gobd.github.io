@@ -27,53 +27,70 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval) {
 
         var winTop = $(window).scrollTop() + 70;
         var winWidth = $(window).width();
-        $(window).resize(function(){
+        var innerNav = $('#innerNav'),
+            navigation = $('#navigation'),
+            navA = navigation.find('a');
+
+        $(window).resize(function () {
             winWidth = $(window).width();
+            navBarColor();
         });
         function navBarColor() {
-            if (winTop > 75 && winWidth > 768) {
-                $('#navigation').css('background-color', 'white');
-                $('#navigation a').css('color', 'black');
-            } else if (winTop < 75 && winWidth > 768) {
-                $('#navigation').css('background-color', 'transparent');
-                $('#navigation a').css('color', '#ebeaea');
-            } else if (winWidth < 768) {
-                $('#navigation').css('background-color', 'white');
-                $('#navigation a').css('color', 'black');
+            if (winTop < 75) {
+                navigation.css('background-color', 'transparent');
+                if (winWidth < 768) {
+                    innerNav.css('background-color', 'transparent');
+                }
+                if (innerNav.css('background-color') === 'rgb(255, 255, 255)') {
+                    innerNav.css('background-color', 'transparent');
+                }
+                navA.css('color', '#ebeaea');
+            } else {
+                navigation.css('background-color', 'white');
+                if (winWidth < 768) {
+                    innerNav.css('background-color', 'white');
+                }
+                if (innerNav.css('background-color') === 'rgb(0, 0, 0, 0)') {
+                    innerNav.css('background-color', 'white');
+                }
+                navA.css('color', 'black');
             }
         }
-
-        console.log('hey reload test dood');
 
         navBarColor();
 
         var navAbout = $('#navAbout'),
             navSkills = $('#navSkills'),
             navPortfolio = $('#navPortfolio'),
-            navContact = $('#navContact');
+            navContact = $('#navContact'),
+            top = $('#top'),
+            portfolio = $('#portfolio'),
+            skills = $('#skills'),
+            about = $('#about');
+
 
         $(window).scroll(function () {
             winTop = $(window).scrollTop() + 70;
             navBarColor();
-            if (winTop < $('#top').offset().top + $('#top').height()) {
+            if (winTop < top.offset().top + top.height()) {
                 navAbout.css('text-decoration', 'none');
                 navSkills.css('text-decoration', 'none');
                 navPortfolio.css('text-decoration', 'none');
                 navContact.css('text-decoration', 'none');
             }
-            if (winTop > $('#portfolio').offset().top && winTop < $('#portfolio').offset().top + $('#portfolio').height()) {
+            if (winTop > portfolio.offset().top && winTop < portfolio.offset().top + portfolio.height()) {
                 navAbout.css('text-decoration', 'none');
                 navSkills.css('text-decoration', 'none');
                 navPortfolio.css('text-decoration', 'underline');
                 navContact.css('text-decoration', 'none');
             }
-            if (winTop > $('#skills').offset().top && winTop < $('#skills').offset().top + $('#skills').height()) {
+            if (winTop > skills.offset().top && winTop < skills.offset().top + skills.height()) {
                 navAbout.css('text-decoration', 'none');
                 navSkills.css('text-decoration', 'underline');
                 navPortfolio.css('text-decoration', 'none');
                 navContact.css('text-decoration', 'none');
             }
-            if (winTop > $('#about').offset().top && winTop < $('#about').offset().top + $('#about').height()) {
+            if (winTop > about.offset().top && winTop < about.offset().top + about.height()) {
                 navAbout.css('text-decoration', 'underline');
                 navSkills.css('text-decoration', 'none');
                 navPortfolio.css('text-decoration', 'none');

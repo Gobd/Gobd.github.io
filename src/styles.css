@@ -54,7 +54,6 @@ html, body {
 #navigation {
     position: fixed;
     top: 0;
-    transform: translateZ(0);
     z-index: 500;
     height: 65px;
     width: 100%;
@@ -64,7 +63,7 @@ html, body {
 #navigation a {
     color: #ebeaea;
     text-decoration: none;
-    transition: all .3s;
+    transition: color .3s;
 }
 #navigation a:hover {
     font-size: 1.1em;
@@ -72,6 +71,7 @@ html, body {
 #innerNav {
     display: flex;
     justify-content: space-around;
+    transition: background-color .3s;
     font-size: 1.45em;
     margin-top: 20px;
 }
@@ -187,30 +187,25 @@ svg {
     #innerNav {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: flex-start;
         font-size: 1.45em;
         margin-top: 0;
         padding: 20px 30px 20px 30px;
-        background-color: white;
-    }
-    #navName {
-        align-self: flex-start;
+        overflow: hidden;
+        /*max-height: 65px;*/
     }
     #navAbout {
-        margin: 30px 0 10px 0;
-        align-self: flex-end;
+        margin: 30px 0 10px 10px;
     }
     #navSkills {
         margin: 10px;
-        align-self: flex-end;
     }
     #navPortfolio {
         margin: 10px;
-        align-self: flex-end;
     }
     #navContact {
         margin: 10px;
-        align-self: flex-end;
     }
     #top{
         font-size: 2em;
