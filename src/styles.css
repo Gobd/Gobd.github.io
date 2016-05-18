@@ -59,7 +59,7 @@ html, body {
     height: 65px;
     width: 100%;
     transition: background-color .3s;
-    border-bottom: 1px solid #51565D;
+    border-bottom: 1px solid black;
 }
 #navigation a {
     color: #ebeaea;
@@ -103,12 +103,12 @@ html, body {
 .borderW {
     margin: 0;
     min-width: 100px;
-    border-bottom: 4px solid white;
+    border-bottom: 3px solid white;
 }
 .borderB {
     margin: -20px 0 0 0;
     min-width: 50px;
-    border-bottom: 4px solid black;
+    border-bottom: 3px solid black;
 }
 #downArrow img {
     filter: invert(100%);
@@ -178,6 +178,7 @@ svg {
     margin: 40px;
 }
 #contactStatement {
+    text-align: center;
     font-size: 1.1em;
     margin-top: 50px;
 }
