@@ -48,7 +48,7 @@ html {
     animation: pulse 1s;
 }
 html, body {
-    overflow: auto;
+    /*overflow-y: auto;*/
     font-family: system, "Segoe UI", Tahoma;
 }
 #navigation {
@@ -170,6 +170,7 @@ svg {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
 }
 #contactButtons svg {
