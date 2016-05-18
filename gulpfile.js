@@ -51,19 +51,21 @@ gulp.task('js', function() {
         .pipe(uglify())
         .pipe(concat('js.min.js'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./js'));
+        .pipe(gulp.dest('./js'))
+        .on('end', reload);
 });
 
 gulp.task('html', function() {
     return gulp.src('./src/**/*.html')
         .pipe(flatten())
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'))
+        .on('end', reload);
 });
 
 gulp.task('watch', function() {
     gulp.watch('./src/**/*.css', ['css']);
-    gulp.watch('./src/**/*.js', ['js']).on("change", reload);
-    gulp.watch('./src/**/*.html', ['html']).on("change", reload);
+    gulp.watch('./src/**/*.js', ['js']);
+    gulp.watch('./src/**/*.html', ['html']);
 });
 
 gulp.task('default', ['css', 'js', 'watch', 'server', 'html']);
