@@ -19,6 +19,7 @@ const
 
 gulp.task('server', function () {
     browserSync.init({
+        notify: false,
         server: {
             baseDir: "./"
         }

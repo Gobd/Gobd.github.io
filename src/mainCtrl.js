@@ -62,14 +62,14 @@ angular.module('app').controller('mainCtrl', function($scope, $interval) {
 
         navBarColor();
 
-        var navAbout = $('#navAbout'),
-            navSkills = $('#navSkills'),
+        var navSkills = $('#navSkills'),
             navPortfolio = $('#navPortfolio'),
             navContact = $('#navContact'),
             top = $('#top'),
             portfolio = $('#portfolio'),
             skills = $('#skills'),
-            about = $('#about');
+            about = $('#about'),
+            navAbout = $('#navAbout');
 
 
         $(window).scroll(function() {
