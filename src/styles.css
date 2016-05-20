@@ -197,6 +197,7 @@ svg {
 .portfolioPiece {
     display: flex;
     flex-direction: column;
+    text-align: center;
     padding: 30px;
     width: 50vw;
 }
@@ -206,17 +207,34 @@ svg {
     width: 50vw;
 }
 
+.portfolioPieceImage img{
+    height: 325px;
+    width: 325px;
+}
+
 .right {
-    flex: .15;
+    width: 50px;
 }
 
 .left {
-   flex: .85;
+   width: calc(50vw - 375px)
+}
+
+.rightMobileContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftMobileContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
 }
 
 .portfolioPieceTitle {
     align-self: center;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 #contact {
@@ -302,6 +320,32 @@ svg {
 }
 
 @media (max-width: 768px) {
+    .portfolioPiecesContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+    .left {
+        flex: 0;
+    }
+    .right {
+        flex: 0;
+    }
+    .leftMobileContainer {
+        flex-direction: column-reverse;
+    }
+    .rightMobileContainer {
+        flex-direction: column;
+    }
+    .portfolioPiece {
+        align-self: center;
+        width: 100vw;
+    }
+    .portfolioPieceImage {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
     #skills {
         padding-left: 20px;
         padding-right: 20px;
