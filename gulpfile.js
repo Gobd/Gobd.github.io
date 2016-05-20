@@ -12,12 +12,12 @@ const
     order = require("gulp-order"),
     annotate = require('gulp-ng-annotate'),
     print = require('gulp-print'),
+    flatten = require('gulp-flatten'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
-    flatten = require('gulp-flatten'),
     processors = [autoprefixer()];
 
-gulp.task('server', function() {
+gulp.task('server', function () {
     browserSync.init({
         server: {
             baseDir: "./"
@@ -25,9 +25,8 @@ gulp.task('server', function() {
     });
 });
 
-gulp.task('css', function() {
+gulp.task('css', function () {
     return gulp.src(mainBowerFiles('**/*.css').concat(['./src/**/*.css']))
-        .pipe(flatten())
         .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(postcss(processors))
@@ -40,11 +39,10 @@ gulp.task('css', function() {
         }));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function () {
     return gulp.src(mainBowerFiles('**/*.js').concat(['./src/**/*.js']))
-        .pipe(flatten())
         .pipe(order([
-            "angular.js","angular-scroll.js","jquery3a1.js","app.js","mainCtrl.js","*.js"
+            "**/angular.js", "**/jquery3b1.js", "**/app.js", "**/mainCtrl.js", "**/*.js"
         ]))
         .pipe(sourcemaps.init())
         .pipe(annotate())
@@ -55,14 +53,13 @@ gulp.task('js', function() {
         .on('end', reload);
 });
 
-gulp.task('html', function() {
+gulp.task('html', function () {
     return gulp.src('./src/**/*.html')
-        .pipe(flatten())
         .pipe(gulp.dest('./'))
         .on('end', reload);
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('./src/**/*.css', ['css']);
     gulp.watch('./src/**/*.js', ['js']);
     gulp.watch('./src/**/*.html', ['html']);

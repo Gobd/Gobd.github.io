@@ -49,7 +49,6 @@ html {
     transform: translate3d(0, 0, 0);
 }
 html, body {
-    /*overflow-y: auto;*/
     font-family: system, "Segoe UI", Tahoma;
 }
 #navigation {

@@ -1,5 +1,5 @@
 {
-  "name": "personal-big",
+  "name": "portfolio-website",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -11,12 +11,10 @@
   "dependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.2",
-    "critical": "^0.7.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.3",
     "gulp-concat": "^2.6.0",
     "gulp-flatten": "^0.2.0",
-    "gulp-inline-css": "^3.1.0",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-order": "^1.1.1",
     "gulp-postcss": "^6.1.0",
