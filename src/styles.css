@@ -245,11 +245,10 @@ svg {
         overflow: hidden;
         max-height: 65px;
         transition: max-height .3s;
+        border-bottom: 1px solid black;
     }
     #navigation {
         background-color: white;
-    }
-    #navigation a {
         color: black;
     }
     #navAbout {
