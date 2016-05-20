@@ -124,7 +124,7 @@ html, body {
 }
 
 .borderB {
-    margin: -20px 0 0 0;
+    margin: -20px 0 30px 0;
     min-width: 50px;
     border-bottom: 3px solid black;
 }
@@ -165,7 +165,6 @@ html, body {
 }
 
 #skillsIcons {
-    margin-top: 50px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -183,8 +182,41 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
     border-bottom: 2px solid black;
+    padding-bottom: 40px;
+}
+
+.portfolioPiecesContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.portfolioPiece {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 50vw;
+}
+
+.portfolioPieceImage {
+    display: flex;
+    width: 50vw;
+}
+
+.right {
+    flex: .15;
+}
+
+.left {
+   flex: .85;
+}
+
+.portfolioPieceTitle {
+    align-self: center;
+    font-size: 1.2em;
 }
 
 #contact {
