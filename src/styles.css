@@ -58,6 +58,11 @@ html {
 
 html, body {
     font-family: system, "Segoe UI", Tahoma;
+    height: 100%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 #navigation {
