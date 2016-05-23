@@ -41,12 +41,11 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src(mainBowerFiles('**/*.js').concat(['./src/**/*.js']))
+    return gulp.src('./src/**/*.js'))
         .pipe(order([
-            "**/angular.js", "**/jquery3b1.js", "**/app.js", "**/mainCtrl.js", "**/*.js"
+            "**/jquery3b1.js", "**/mainCtrl.js", "**/*.js"
         ]))
         .pipe(sourcemaps.init())
-        .pipe(annotate())
         .pipe(uglify())
         .pipe(concat('js.min.js'))
         .pipe(sourcemaps.write('/maps'))

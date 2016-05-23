@@ -25,6 +25,11 @@ angular.module('app').controller('mainCtrl', function($scope, $interval) {
 
     $(document).ready(function() {
 
+        $(window).load(function() {
+            // When the page has loaded
+            $('body').css('visibility', 'visible');
+        });
+
         var winTop = $(window).scrollTop() + 70;
         var winWidth = $(window).width();
         var innerNav = $('#innerNav'),

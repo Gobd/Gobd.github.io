@@ -25,15 +25,9 @@
                 window.addEventListener('load', loadDeferredStyles);
         </script>
         <style>
-            .ng-cloak,
-            .x-ng-cloak,
-            [data-ng-cloak],
-            [ng-cloak],
-            [ng\:cloak],
-            [x-ng-cloak] {
-                display: none !important;
+            body {
+              visibility: hidden;
             }
-
         </style>
         <script>
             (function(i, s, o, g, r, a, m) {
@@ -54,8 +48,7 @@
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body ng-app="app" ng-controller="mainCtrl">
-        <main class="ng-cloak" ng-cloak>
+    <body>
 
             <nav id="navigation">
                 <div id="innerNav">
@@ -204,6 +197,5 @@
                     </a>
                 </div>
             </section>
-        </main>
     </body>
 </html>
