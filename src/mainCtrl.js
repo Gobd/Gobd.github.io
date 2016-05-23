@@ -3,6 +3,8 @@ $(document).ready(function() {
     var tagText = 'Full Stack Web Developer | UI/UX | JavaScript',
     devInfo = $('#devInfo');
 
+    
+
     function printer(text) {
         var count = 1;
         var print = function() {
