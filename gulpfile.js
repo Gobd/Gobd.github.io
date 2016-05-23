@@ -10,14 +10,12 @@ const
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     order = require("gulp-order"),
-    annotate = require('gulp-ng-annotate'),
     print = require('gulp-print'),
-    flatten = require('gulp-flatten'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     processors = [autoprefixer()];
 
-gulp.task('server', function () {
+gulp.task('server', function() {
     browserSync.init({
         notify: false,
         server: {
@@ -26,8 +24,11 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('css', function () {
+gulp.task('css', function() {
     return gulp.src(mainBowerFiles('**/*.css').concat(['./src/**/*.css']))
+        .pipe(order([
+          '**/normalize.css', '**/.css'
+        ]))
         .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(postcss(processors))
@@ -40,10 +41,10 @@ gulp.task('css', function () {
         }));
 });
 
-gulp.task('js', function () {
+gulp.task('js', function() {
     return gulp.src('./src/**/*.js')
         .pipe(order([
-            "**/jquery3rc1.js", "**/mainCtrl.js", "**/*.js"
+            "**/jquery3rc1.js", "**/app.js", "**/*.js"
         ]))
         .pipe(sourcemaps.init())
         .pipe(uglify())
@@ -53,13 +54,13 @@ gulp.task('js', function () {
         .on('end', reload);
 });
 
-gulp.task('html', function () {
+gulp.task('html', function() {
     return gulp.src('./src/**/*.html')
         .pipe(gulp.dest('./'))
         .on('end', reload);
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     gulp.watch('./src/**/*.css', ['css']);
     gulp.watch('./src/**/*.js', ['js']);
     gulp.watch('./src/**/*.html', ['html']);
