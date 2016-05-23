@@ -1,9 +1,9 @@
 {
-  "name": "weekly-deals",
+  "name": "portfolio-website",
   "description": "",
   "main": "gulpfile.js",
   "authors": [
-    "Weekly Deals"
+    "Brian K"
   ],
   "license": "ISC",
   "moduleType": [],
@@ -17,7 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "normalize-css": "^4.1.1",
-    "angular": "^1.5.5"
+    "normalize-css": "^4.1.1"
   }
 }

@@ -41,14 +41,14 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src('./src/**/*.js'))
+    return gulp.src('./src/**/*.js')
         .pipe(order([
-            "**/jquery3b1.js", "**/mainCtrl.js", "**/*.js"
+            "**/jquery3rc1.js", "**/mainCtrl.js", "**/*.js"
         ]))
-        .pipe(sourcemaps.init())
-        .pipe(uglify())
+        // .pipe(sourcemaps.init())
+        // .pipe(uglify())
         .pipe(concat('js.min.js'))
-        .pipe(sourcemaps.write('/maps'))
+        // .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./js'))
         .on('end', reload);
 });
