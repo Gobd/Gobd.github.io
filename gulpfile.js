@@ -11,6 +11,7 @@ const
     autoprefixer = require('autoprefixer'),
     order = require("gulp-order"),
     print = require('gulp-print'),
+    htmlmin = require('gulp-htmlmin')
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     processors = [autoprefixer()];
@@ -56,6 +57,7 @@ gulp.task('js', function() {
 
 gulp.task('html', function() {
     return gulp.src('./src/**/*.html')
+        .pipe(htmlmin({collapseWhitespace: true, minifyCSS: true, minifyJS: true}))
         .pipe(gulp.dest('./'))
         .on('end', reload);
 });
