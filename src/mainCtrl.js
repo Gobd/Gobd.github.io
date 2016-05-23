@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
     var tagText = 'Full Stack Web Developer | UI/UX | JavaScript',
-    devInfo = $('#devInfo');
-
-    
+        devInfo = $('#devInfo');
 
     function printer(text) {
         var count = 1;
@@ -11,7 +9,7 @@ $(document).ready(function() {
             devInfo.text(text.slice(0, count));
             count++;
             if (count === tagText.length + 1) {
-              clearInterval(int);
+                clearInterval(int);
             }
         };
         var delayRand = function() {
@@ -134,6 +132,10 @@ $(document).ready(function() {
 
     $(document).on('click', '#navName', function() {
         scrollTo('top');
+    });
+
+    $(document).on('click', '#downArrow', function() {
+        scrollTo('about');
     });
 
     $(document).on('click', '#navAbout', function() {
