@@ -33,7 +33,7 @@ gulp.task('css', function () {
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('./dist/css'))
         .pipe(reload({
             stream: true,
             match: '**/*.css'
@@ -49,7 +49,7 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(concat('js.min.js'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./js/js'))
         .on('end', reload);
 });
 

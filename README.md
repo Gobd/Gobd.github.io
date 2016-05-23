@@ -1,4 +1,4 @@
 # Personal Website
 My website!
 
-Using Angular & UI-Router, all DOM manipulation done with vanilla JS, animations using CSS.
+Personal website using only JQuery to keep page size down. Scores very well on Google PageSpeed Insights.
