@@ -129,27 +129,33 @@ function mainPage() {
         return false;
     };
 
-    $(document).on('click', '#navName', function() {
+    $(document).on('click', '#navName', function(e) {
+        e.preventDefault();
         scrollTo('top');
     });
 
-    $(document).on('click', '#downArrow', function() {
+    $(document).on('click', '#downArrow', function(e) {
+        e.preventDefault();
         scrollTo('about');
     });
 
-    $(document).on('click', '#navAbout', function() {
+    $(document).on('click', '#navAbout', function(e) {
+        e.preventDefault();
         scrollTo('about');
     });
 
-    $(document).on('click', '#navSkills', function() {
+    $(document).on('click', '#navSkills', function(e) {
+        e.preventDefault();
         scrollTo('skills');
     });
 
-    $(document).on('click', '#navPortfolio', function() {
+    $(document).on('click', '#navPortfolio', function(e) {
+        e.preventDefault();
         scrollTo('portfolio');
     });
 
-    $(document).on('click', '#navContact', function() {
+    $(document).on('click', '#navContact', function(e) {
+        e.preventDefault();
         scrollTo('contact');
     });
 
