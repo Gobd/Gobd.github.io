@@ -1,3 +1,18 @@
+var scrollGlobe = function(id, bool) {
+    var scrollLoc;
+    if (!bool) {
+        scrollLoc = id.slice(3, id.length).toLowerCase();
+    } else {
+        scrollLoc = id;
+    }
+    root.animate({
+        scrollTop: $('#' + scrollLoc).offset().top - 65
+    }, 200);
+    return false;
+};
+
+var root = $('html, body');
+
 function mainPage() {
 
     var tagText = 'Full Stack Web Developer | UI/UX | JavaScript',
@@ -13,7 +28,7 @@ function mainPage() {
             }
         };
         var delayRand = function() {
-            return Math.random() * (120 - 70) + 70;
+            return Math.random() * (100 - 70) + 70;
         };
         var int = window.setInterval(print, delayRand());
     }
@@ -39,11 +54,6 @@ function mainPage() {
     $(document).on('click', '#navToggle', function() {
         navToggle.toggleClass("active");
         innerNav.css('max-height') === '65px' ? innerNav.css('max-height', '500px') : innerNav.css('max-height', '65px');
-    });
-
-    $(document).on('click', '.navLink', function() {
-        if (navToggle.hasClass('active')) navToggle.removeClass('active');
-        innerNav.css('max-height', '65px');
     });
 
     $(window).resize(function() {
@@ -121,42 +131,13 @@ function mainPage() {
 
     });
 
-    var root = $('html, body');
-    var scrollTo = function(id) {
-        root.animate({
-            scrollTop: $('#' + id).offset().top - 65
-        }, 200);
-        return false;
-    };
-
-    $(document).on('click', '#navName', function(e) {
+    $(document).on('click', '.navLink', function(e) {
         e.preventDefault();
-        scrollTo('top');
-    });
-
-    $(document).on('click', '#downArrow', function(e) {
-        e.preventDefault();
-        scrollTo('about');
-    });
-
-    $(document).on('click', '#navAbout', function(e) {
-        e.preventDefault();
-        scrollTo('about');
-    });
-
-    $(document).on('click', '#navSkills', function(e) {
-        e.preventDefault();
-        scrollTo('skills');
-    });
-
-    $(document).on('click', '#navPortfolio', function(e) {
-        e.preventDefault();
-        scrollTo('portfolio');
-    });
-
-    $(document).on('click', '#navContact', function(e) {
-        e.preventDefault();
-        scrollTo('contact');
+        scrollGlobe(e.target.id);
+        if (navToggle.hasClass('active')) {
+            navToggle.removeClass('active')
+        };
+        innerNav.css('max-height', '65px');
     });
 
 };
