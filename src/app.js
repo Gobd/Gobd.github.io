@@ -6,60 +6,68 @@
             $body = $('body');
 
         window.onhashchange = function() {
+            // hide body on hash change, the render function shows the body once it has rendered the page
             showBody(false);
             render();
         };
 
+        // store the main page if that is where the user starts
         if (!window.location.hash || window.location.hash === '#/') {
             if ($main.html()) {
                 stateObj.indexHtml = $main.html();
             }
         }
 
-        function showBody(bool) {
-            if (bool) {
+        // hides body if hide is true, otherwise shows it
+        function showBody(hide) {
+            if (hide) {
                 $body.css('visibility', 'visible');
             } else {
                 $body.css('visibility', 'hidden');
             }
         }
 
+        // used to scroll down upon loading the main page after coming back from another view
         function scrollDown() {
             $(window).scrollTop(stateObj.scrollData - 70);
         }
 
+        // makes it easy to show a new template with less repeating
+        function showTemplate(data) {
+            $main.html(data);
+            showBody(true);
+        }
+        // the if-else inside each if handle the cases where the template is already cached or not
         function render() {
             if (window.location.hash === '#/asd') {
                 if (!stateObj.testHtml) {
                     $.get('/test.html', function(data) {}).then(function(data) {
                         stateObj.testHtml = data;
-                        $main.html(data);
-                        showBody(true);
-                        $(window).off();
+                        showTemplate(data);
                     });
                 } else {
-                    $main.html(stateObj.testHtml);
-                    showBody(true);
-                    $(window).off();
+                    showTemplate(stateObj.testHtml);
                 }
+                // must remove scroll listeners otherwise the stateObj.scrollData doesn't work
+                $(window).off();
             } else {
                 window.location.hash = '#';
                 if (!stateObj.indexHtml) {
                     $.get('/mainTemp.html', function(data) {}).then(function(data) {
                         stateObj.indexHtml = data;
-                        $main.html(data);
+                        showTemplate(data);
+                        // this is the javascript that this view requires
                         mainPage();
-                        showBody(true);
+                        // function that scrolls to the stateObj.scrollData height, taking into account the navBars height
                         scrollDown();
                     });
                 } else {
-                    $main.html(stateObj.indexHtml);
+                    showTemplate(stateObj.indexHtml);
                     mainPage();
-                    showBody(true);
                     scrollDown();
                 }
             }
         }
-
+        // call render function to kick things off
         render();
     });
