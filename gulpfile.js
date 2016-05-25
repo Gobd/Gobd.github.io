@@ -14,6 +14,7 @@ const
     htmlmin = require('gulp-htmlmin')
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
+    flatten = require('gulp-flatten'),
     processors = [autoprefixer()];
 
 gulp.task('server', function() {
@@ -47,16 +48,18 @@ gulp.task('js', function() {
         .pipe(order([
             "**/jquery3rc1.js", "**/app.js", "**/*.js"
         ]))
+        .pipe(flatten())
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(concat('js.min.js'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./js/js'))
+        .pipe(gulp.dest('./dist/js'))
         .on('end', reload);
 });
 
 gulp.task('html', function() {
     return gulp.src('./src/**/*.html')
+        .pipe(flatten())
         .pipe(htmlmin({collapseWhitespace: true, minifyCSS: true, minifyJS: true}))
         .pipe(gulp.dest('./'))
         .on('end', reload);
