@@ -1,21 +1,17 @@
 $(document).ready(function() {
 
-    jQuery.fn.outerHTML = function() {
-        return (this[0]) ? this[0].outerHTML : '';
-    };
+    stateObj = {};
+    var $main = $('#main'),
+        $body = $('body');
 
     window.onhashchange = function() {
         showBody(false);
         render();
     };
 
-    var obj = {},
-        $main = $('#main'),
-        $body = $('body');
-
     if (!window.location.hash || window.location.hash === '#/') {
         if ($main.html()) {
-            obj.indexHtml = $main.html();
+            stateObj.indexHtml = $main.html();
         }
     }
 
@@ -27,32 +23,39 @@ $(document).ready(function() {
         }
     }
 
+    function scrollDown() {
+        $(window).scrollTop(stateObj.scrollData - 70);
+    }
+
     function render() {
         if (window.location.hash === '#/asd') {
-            if (!obj.testHtml) {
+            if (!stateObj.testHtml) {
                 $.get('/test.html', function(data) {}).then(function(data) {
-                    obj.testHtml = data;
+                    stateObj.testHtml = data;
                     $main.html(data);
                     showBody(true);
+                    $(window).off();
                 });
             } else {
-                $main.html(obj.testHtml);
+                $main.html(stateObj.testHtml);
                 showBody(true);
+                $(window).off();
             }
         } else {
             window.location.hash = '#';
-            if (!obj.indexHtml) {
+            if (!stateObj.indexHtml) {
                 $.get('/mainTemp.html', function(data) {}).then(function(data) {
-                    obj.indexHtml = data;
+                    stateObj.indexHtml = data;
                     $main.html(data);
                     mainPage();
                     showBody(true);
-
+                    scrollDown();
                 });
             } else {
-                $main.html(obj.indexHtml);
+                $main.html(stateObj.indexHtml);
                 mainPage();
                 showBody(true);
+                scrollDown();
             }
         }
     }

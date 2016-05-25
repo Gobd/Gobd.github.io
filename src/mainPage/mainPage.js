@@ -75,9 +75,9 @@ function mainPage() {
         about = $('#about'),
         navAbout = $('#navAbout');
 
-
     $(window).scroll(function() {
         winTop = $(window).scrollTop() + 70;
+        stateObj.scrollData = winTop;
         navBarColor();
 
         [].forEach.call(svgList, function(e) {
