@@ -1,4 +1,4 @@
-function mainPage(){
+function mainPage() {
 
     var tagText = 'Full Stack Web Developer | UI/UX | JavaScript',
         devInfo = $('#devInfo');
@@ -19,8 +19,6 @@ function mainPage(){
     }
 
     printer(tagText);
-
-    // $('body').css('visibility', 'visible');
 
     var svgList = document.getElementsByTagName('svg');
 
