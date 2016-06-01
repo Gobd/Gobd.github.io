@@ -11,6 +11,8 @@
   "dependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.2",
+    "connect-history-api-fallback": "^1.2.0",
+    "doiuse": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.3",
     "gulp-concat": "^2.6.0",

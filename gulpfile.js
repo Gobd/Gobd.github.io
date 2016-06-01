@@ -12,16 +12,25 @@ const
     order = require("gulp-order"),
     print = require('gulp-print'),
     htmlmin = require('gulp-htmlmin')
-    browserSync = require('browser-sync').create(),
+browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     flatten = require('gulp-flatten'),
-    processors = [autoprefixer()];
+    doiuse = require('doiuse'),
+    processors = [autoprefixer(), doiuse({
+        browsers: [
+            '> 5% in US'
+        ],
+        ignore: ['flexbox', 'viewport-units'],
+        ignoreFiles: ['**/*/normalize.css']
+    })],
+    historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('server', function() {
     browserSync.init({
         notify: false,
         server: {
-            baseDir: "./"
+            baseDir: "./",
+            middleware: [historyApiFallback()]
         }
     });
 });
@@ -29,7 +38,7 @@ gulp.task('server', function() {
 gulp.task('css', function() {
     return gulp.src(mainBowerFiles('**/*.css').concat(['./src/**/*.css']))
         .pipe(order([
-          '**/normalize.css', '**/.css'
+            '**/normalize.css', '**/.css'
         ]))
         .pipe(sourcemaps.init())
         .pipe(cleanCSS())
@@ -60,7 +69,11 @@ gulp.task('js', function() {
 gulp.task('html', function() {
     return gulp.src('./src/**/*.html')
         .pipe(flatten())
-        .pipe(htmlmin({collapseWhitespace: true, minifyCSS: true, minifyJS: true}))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            minifyCSS: true,
+            minifyJS: true
+        }))
         .pipe(gulp.dest('./'))
         .on('end', reload);
 });
