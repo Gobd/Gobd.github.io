@@ -197,11 +197,13 @@ svg {
     width: calc(50vw - 375px)
 }
 .rightMobileContainer {
+  margin-top: 25px;
     width: 100vw;
     display: flex;
     flex-direction: row;
 }
 .leftMobileContainer {
+  margin-top: 25px;
     width: 100vw;
     display: flex;
     flex-direction: row;
