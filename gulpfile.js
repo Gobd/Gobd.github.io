@@ -8,6 +8,7 @@ const
     cleanCSS = require('gulp-clean-css'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
+    inlinesource = require('gulp-inline-source'),
     autoprefixer = require('autoprefixer'),
     order = require("gulp-order"),
     print = require('gulp-print'),
@@ -35,21 +36,24 @@ gulp.task('server', function() {
     });
 });
 
-gulp.task('css', function() {
-    return gulp.src(mainBowerFiles('**/*.css').concat(['./src/**/*.css']))
+gulp.task('css', function(done) {
+    return gulp.src(mainBowerFiles('**/*.css').concat(['./src/styles.css']))
         .pipe(order([
             '**/normalize.css', '**/.css'
         ]))
-        .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(postcss(processors))
-        .pipe(concat('css.min.css'))
-        .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/css'))
-        .pipe(reload({
-            stream: true,
-            match: '**/*.css'
-        }));
+        .pipe(concat('css.css'))
+        .pipe(gulp.dest('./src/css'))
+        done();
+});
+
+gulp.task('projectCss', function(done) {
+    return gulp.src('./src/projects.css')
+        .pipe(cleanCSS())
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./src/css'))
+        done();
 });
 
 gulp.task('js', function() {
@@ -66,9 +70,10 @@ gulp.task('js', function() {
         .on('end', reload);
 });
 
-gulp.task('html', function() {
+gulp.task('html', ['css', 'projectCss'], function() {
     return gulp.src('./src/**/*.html')
         .pipe(flatten())
+        .pipe(inlinesource())
         .pipe(htmlmin({
             collapseWhitespace: true,
             minifyCSS: true,
@@ -79,9 +84,8 @@ gulp.task('html', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/**/*.css', ['css']);
     gulp.watch('./src/**/*.js', ['js']);
-    gulp.watch('./src/**/*.html', ['html']);
+    gulp.watch(['./src/**/*.html', './src/**/*.css'], ['html']);
 });
 
-gulp.task('default', ['css', 'js', 'watch', 'server', 'html']);
+gulp.task('default', ['watch', 'html', 'js', 'server', 'projectCss']);
