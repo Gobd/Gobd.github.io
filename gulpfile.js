@@ -55,7 +55,7 @@ gulp.task('css', function() {
 gulp.task('js', function() {
     return gulp.src('./src/**/*.js')
         .pipe(order([
-            "**/jquery3rc1.js", "**/app.js", "**/*.js"
+            "**/jquery3.js", "**/app.js", "**/*.js"
         ]))
         .pipe(flatten())
         .pipe(sourcemaps.init())
