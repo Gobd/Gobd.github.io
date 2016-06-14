@@ -28,7 +28,6 @@
   // the single page app to route accordingly.
   /////////////////////////////////////////////////////////////////////////
   (function(l) {
-      console.log(l)
     // SET THIS: e.g. my-repo-name
     var gitHubRepoName = 'Gobd.github.io'
     // SET THIS: e.g. http://subdomain.example.tld
@@ -75,7 +74,15 @@
               {{tagLine}}
           </p>
           <div onclick="scrollGlobe('about', true)" id="downArrow">
-              <img height="75px" src="dist/down.svg">
+            <svg viewbox="0 0 453.834 453.834" style="enable-background:new 0 0 453.834 453.834;" xml:space="preserve">
+                    <path style="fill:white;" d="M226.932,0C101.625,0,0.03,101.595,0.03,226.902C0,352.269,101.595,453.834,226.932,453.834
+                      c125.307,0,226.871-101.595,226.871-226.902C453.834,101.595,352.239,0,226.932,0z M226.932,423.465
+                      c-108.344,0-196.502-88.158-196.502-196.502S118.588,30.46,226.932,30.46c108.344-0.03,196.472,88.128,196.472,196.502
+                      C423.434,335.276,335.276,423.465,226.932,423.465z"/>
+                    <path style="fill:white;" d="M313.723,177.199l-87.885,87.915l-87.885-87.915c-5.928-5.928-15.565-5.928-21.492,0
+                      s-5.928,15.565,0,21.492l98.585,98.585c2.979,3.04,6.901,4.438,10.792,4.438c3.922,0,7.813-1.49,10.792-4.438l98.555-98.585
+                      c5.928-5.928,5.928-15.565,0-21.492S319.65,171.271,313.723,177.199z"/>
+            </svg>
           </div>
       </section>
 
@@ -453,34 +460,36 @@
 
           <span class="rightMobileContainer">
               <span class="portfolioPiece">
-                  <p class="portfolioPieceTitle">Title Goes Here</p>
-                  Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece.
+                  <a href="/#/projects" class="portfolioPieceTitle">Whats Your Deal</a>
+                  Website to find recurring deals. Uses Angular, Node, many Google geolocation API's, all DOM manipulation done with vanilla JS, and JWT's for user authorization including role checking. Stores user submitted images with Amazon S3.
               </span>
               <span class="portfolioPieceImage">
                   <div class="right"></div>
-                  <img src="http://placehold.it/325x325" alt="">
+                  <a href="/#/projects"><img src="./dist/img/DealsMain.png" alt=""></a>
               </span>
           </span>
 
           <span class="leftMobileContainer">
               <span class="portfolioPieceImage">
                   <div class="left"></div>
-                  <img src="http://placehold.it/325x325" alt="">
+                  <a href="/#/projects"><img src="./dist/img/CHTMain.png" alt=""></a>
               </span>
               <span class="portfolioPiece">
-                  <p class="portfolioPieceTitle">Title Goes Here</p>
-                  Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece.
+                  <a href="/#/projects" class="portfolioPieceTitle">CHT</a>
+Real-time chatroom built using Angular with a Firebase backend. Allows users to register, create new chatrooms, make posts, including inline GIFs (just like Slack!) from the Giphy API, and has live updating timestamps.
               </span>
           </span>
 
           <span class="rightMobileContainer">
               <span class="portfolioPiece">
-                  <p class="portfolioPieceTitle">Title Goes Here</p>
-                  Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece. Here is text about a portfolio piece.
-              </span>
+                  <a href="/#/projects" class="portfolioPieceTitle">This Website!</a>
+                  I had fun with this website, the page (click on a title or picture) is a single page application built using only jQuery.
+                  Using Gulp, CloudFlare, system fonts, and ImageOptim has enabled me to keep the page very lightweight (under 300KB, many other portfolio sites 3X as big) and fast.
+                  <br>Google Pagespeed score above 90.
+                </span>
               <span class="portfolioPieceImage">
                   <div class="right"></div>
-                  <img src="http://placehold.it/325x325" alt="">
+                  <a href="/#/projects"><img src="./dist/img/PortfolioMain.png" alt=""></a>
               </span>
           </span>
 

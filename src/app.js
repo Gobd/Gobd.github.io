@@ -39,14 +39,14 @@
         }
         // the if-else inside each if handle the cases where the template is already cached or not
         function render() {
-            if (window.location.hash === '#/asd') {
-                if (!stateObj.testHtml) {
-                    $.get('/test.html', function(data) {}).then(function(data) {
-                        stateObj.testHtml = data;
+            if (window.location.hash === '#/projects') {
+                if (!stateObj.projectsHtml) {
+                    $.get('/projects.html', function(data) {}).then(function(data) {
+                        stateObj.projectsHtml = data;
                         showTemplate(data);
                     });
                 } else {
-                    showTemplate(stateObj.testHtml);
+                    showTemplate(stateObj.projectsHtml);
                 }
                 // must remove scroll listeners otherwise the stateObj.scrollData doesn't work
                 $(window).off();
