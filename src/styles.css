@@ -240,6 +240,10 @@ svg {
     font-size: 1.1em;
     margin-top: 50px;
 }
+#contactStatement a {
+  font-size: 1.25em;
+  font-weight: bold;
+}
 #contactStatement a:link, a:visited, a:hover, a:active {
     color: black;
 }
